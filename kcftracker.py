@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 from time import time
 
-import fhog import
+import fhog
 
 # ffttools
 def fftd(img, backwards=False):	
