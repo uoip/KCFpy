@@ -11,7 +11,9 @@ It is translated from [KCFcpp](https://github.com/joaofaro/KCFcpp) (Authors: Joa
 - Python 2.7
 - NumPy
 - Numba (needed if you want to use the hog feature)
-- OpenCV (make sure you can `import cv2` in python)
+- OpenCV (ensure that you can `import cv2` in python)
+
+Actually, I have installed Anaconda for Python 2.7, and OpenCV 3.1 from [opencv.org](http://opencv.org/).
 
 ### Usage
 ```shell
