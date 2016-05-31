@@ -1,6 +1,5 @@
 import numpy as np 
 import cv2
-from time import time
 
 import fhog
 
@@ -127,8 +126,6 @@ class KCFTracker:
 		self._tmpl = None  # numpy.ndarray    raw: (size_patch[0], size_patch[1])   hog: (size_patch[2], size_patch[0]*size_patch[1])
 		self.hann = None  # numpy.ndarray    raw: (size_patch[0], size_patch[1])   hog: (size_patch[2], size_patch[0]*size_patch[1])
 
-		self.tt = 0.04
-
 	def subPixelPeak(self, left, center, right):
 		divisor = 2*center - right - left   #float
 		return (0 if abs(divisor)<1e-3 else 0.5*(right-left)/divisor)
@@ -157,7 +154,6 @@ class KCFTracker:
 		return fftd(res)
 
 	def gaussianCorrelation(self, x1, x2):
-		#t0 = time()
 		if(self._hogfeatures):
 			c = np.zeros((self.size_patch[0], self.size_patch[1]), np.float32)
 			for i in xrange(self.size_patch[2]):
@@ -173,10 +169,6 @@ class KCFTracker:
 			c = fftd(c, True)
 			c = real(c)
 			c = rearrange(c)
-
-		#t1 = time()
-		#self.tt = 0.9*self.tt + 0.1*(t1-t0)
-		#print self.tt
 
 		if(x1.ndim==3 and x2.ndim==3):
 			d = (np.sum(x1[:,:,0]*x1[:,:,0]) + np.sum(x2[:,:,0]*x2[:,:,0]) - 2.0*c) / (self.size_patch[0]*self.size_patch[1]*self.size_patch[2])
