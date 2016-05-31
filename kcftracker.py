@@ -2,8 +2,7 @@ import numpy as np
 import cv2
 from time import time
 
-from fhog import *
-
+import fhog import
 
 # ffttools
 def fftd(img, backwards=False):	
@@ -228,9 +227,9 @@ class KCFTracker:
 
 		if(self._hogfeatures):
 			mapp = {'sizeX':0, 'sizeY':0, 'numFeatures':0, 'map':0}
-			mapp = getFeatureMaps(z, self.cell_size, mapp)
-			mapp = normalizeAndTruncate(mapp, 0.2)
-			mapp = PCAFeatureMaps(mapp)
+			mapp = fhog.getFeatureMaps(z, self.cell_size, mapp)
+			mapp = fhog.normalizeAndTruncate(mapp, 0.2)
+			mapp = fhog.PCAFeatureMaps(mapp)
 			self.size_patch = map(int, [mapp['sizeY'], mapp['sizeX'], mapp['numFeatures']])
 			FeaturesMap = mapp['map'].reshape((self.size_patch[0]*self.size_patch[1], self.size_patch[2])).T   # (size_patch[2], size_patch[0]*size_patch[1])
 		else:
