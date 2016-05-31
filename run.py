@@ -5,7 +5,6 @@ from time import time
 
 import kcftracker
 
-
 selectingObject = False
 initTracking = False
 onTracking = False
@@ -14,7 +13,6 @@ w, h = 0, 0
 
 inteval = 1
 duration = 0.01
-
 
 # mouse callback function
 def draw_boundingbox(event, x, y, flags, param):
