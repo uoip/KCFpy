@@ -16,31 +16,31 @@ duration = 0.01
 
 # mouse callback function
 def draw_boundingbox(event, x, y, flags, param):
-    global selectingObject, initTracking, onTracking, ix, iy, cx,cy, w, h
-
-    if event == cv2.EVENT_LBUTTONDOWN:
-        selectingObject = True
-        onTracking = False
-        ix, iy = x, y
-        cx, cy = x, y
-
-    elif event == cv2.EVENT_MOUSEMOVE:
-        cx, cy = x, y
-
-    elif event == cv2.EVENT_LBUTTONUP:
-        selectingObject = False
-        if(abs(x-ix)>10 and abs(y-iy)>10):
-        	w, h = abs(x - ix), abs(y - iy)
-        	ix, iy = min(x, ix), min(y, iy)
-        	initTracking = True
-        else:
-        	onTracking = False
-
-    elif event == cv2.EVENT_RBUTTONDOWN:
-    	onTracking = False
-    	if(w>0):
-    		ix, iy = x-w/2, y-h/2
-    		initTracking = True
+	global selectingObject, initTracking, onTracking, ix, iy, cx,cy, w, h
+	
+	if event == cv2.EVENT_LBUTTONDOWN:
+		selectingObject = True
+		onTracking = False
+		ix, iy = x, y
+		cx, cy = x, y
+	
+	elif event == cv2.EVENT_MOUSEMOVE:
+		cx, cy = x, y
+	
+	elif event == cv2.EVENT_LBUTTONUP:
+		selectingObject = False
+		if(abs(x-ix)>10 and abs(y-iy)>10):
+			w, h = abs(x - ix), abs(y - iy)
+			ix, iy = min(x, ix), min(y, iy)
+			initTracking = True
+		else:
+			onTracking = False
+	
+	elif event == cv2.EVENT_RBUTTONDOWN:
+		onTracking = False
+		if(w>0):
+			ix, iy = x-w/2, y-h/2
+			initTracking = True
 
 
 
