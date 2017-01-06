@@ -56,7 +56,7 @@ if __name__ == '__main__':
 			inteval = 30
 	else:  assert(0), "too many arguments"
 
-	tracker = kcftracker.KCFTracker(False, True, False)  # hog, fixed_window, multiscale
+	tracker = kcftracker.KCFTracker(True, True, True)  # hog, fixed_window, multiscale
 	#if you use hog feature, there will be a short pause after you draw a first boundingbox, that is due to the use of Numba.
 
 	cv2.namedWindow('tracking')
